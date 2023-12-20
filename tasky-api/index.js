@@ -4,6 +4,9 @@ import tasksRouter from './api/tasks';
 import './db';
 import usersRouter from './api/users';
 
+// other imports
+import cors from 'cors';
+
 dotenv.config();
 
 const errHandler = (err, req, res, next) => {
@@ -17,6 +20,8 @@ const errHandler = (err, req, res, next) => {
 
 const app = express();
 
+app.use(cors());
+
 const port = process.env.PORT;
 
 app.use(express.json());
@@ -27,7 +32,6 @@ app.use(errHandler);
 
 //Users router
 app.use('/api/users', usersRouter);
-
 
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
