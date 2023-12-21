@@ -12,8 +12,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT; 
 
-app.use('/api/movies',authenticate,  moviesRouter);
 app.use(cors());
+
+app.use('/api/movies',authenticate,  moviesRouter);
+
 app.use(express.json());
 app.use('/api/users', usersRouter);
 app.use('/api/movies', moviesRouter); //ADD THIS BEFORE THE DEFAULT ERROR HANDLER.
